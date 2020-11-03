@@ -23,6 +23,13 @@ namespace DataAccess
             _urlCollection = _mongoDatabase.GetCollection<KittenUrlDto>("KittenUrlDb");
         }
 
+
+        public bool testmethod()
+        {
+            HandleShortenUrl("ppp");
+            return true;
+        }
+
         public string HandleShortenUrl(string url) //should this not be a tasl?
         {
             //get id
@@ -80,12 +87,12 @@ namespace DataAccess
             }
         }
 
-        private async Task<ObjectId> CreateRecord() //should this be static
+        public async Task<ObjectId> CreateRecord() //should this be static
         {
             var client = new MongoClient("mongodb+srv://Steph:StephPassword@kittenurlcluster.myohq.azure.mongodb.net/sample_geospatial?retryWrites=true&w=majority");
             var database = client.GetDatabase("KittenUrlDb"); //this will create if not exists
 
-            var dbList = client.ListDatabases().ToList();
+            //var dbList = client.ListDatabases().ToList();
 
             var collection = database.GetCollection<KittenUrlDto>("KittenUrlDb"); //if does not exist it creates
 
@@ -94,7 +101,7 @@ namespace DataAccess
             return model.Id;
         }
 
-        private async Task<bool> UpdateRecord(ObjectId id, string longUrl, string shortUrl)
+        public async Task<bool> UpdateRecord(ObjectId id, string longUrl, string shortUrl)
         {
             var myShortUrl = new KittenUrlDto() { Id = id, ShortUrl = shortUrl, LongUrl = longUrl, DateCreated = DateTime.UtcNow };
 

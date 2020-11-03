@@ -17,10 +17,12 @@
 
 @if(Model.ShortUrl != null)
 {
-<div>
-    <h1>Your original url:</h1>
-    <label>@Model.LongUrl</label>
-    <h1>Your kittenurl: </h1>
-    <label>@Model.ShortUrl</label>
-</div>
+<section style="padding-left:50px;padding-top:50px;">
+    <div>
+        <h4>Your original url:</h4>
+        <label>@Model.LongUrl</label>
+        <h4>Your kittenurl: </h4>
+        <label>@Model.ShortUrl</label>
+    </div>
+</section>
 }
